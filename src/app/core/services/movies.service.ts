@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { Injectable } from '@angular/core';
 import MoviesJson from '../../../assets/json/movies.json';
 import { MovieModel } from '../models/movie.model';
 
@@ -12,8 +12,10 @@ export class MoviesService {
   getMovies(){
     return this.movies;
   }
-  @Output() getNameView: EventEmitter<string> = new EventEmitter();
-  @Output() getInfoMovie: EventEmitter<MovieModel> = new EventEmitter();
+
+  getInfoMovie(id:number){
+    return this.movies.filter(movie => movie.id == id)[0];
+  }
 
   constructor() { }
 }

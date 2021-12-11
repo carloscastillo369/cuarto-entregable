@@ -1,12 +1,12 @@
 <div class="container initial-content">
     <h3 class="text-white text-welcome">¡Las mejores películas las encuentras aquí!</h3>
-    <button class="btn btn-primary" (click)="changeViewTo('movies')">Mira nuestra catálgo de películas</button>
+    <button class="btn btn-primary" routerLink="/movies">Mira nuestra catálgo de películas</button>
 </div>
 
 <p class="comming-soon fs-3">Proximos estrenos</p>
 <div class="list-card-group">
     <div class="card bg-dark text-white" *ngFor="let nextmovie of nextReleases">
-        <img src={{nextmovie.Poster}} class="card-img" alt="...">
+        <img src={{nextmovie.Poster}} class="card-img">
         <div class="card-img-overlay">
             <h5 class="card-title">{{nextmovie.Title}}</h5>
             <p class="card-text">{{nextmovie.Year}}</p>

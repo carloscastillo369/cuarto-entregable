@@ -15,15 +15,6 @@
     position: relative;
 }
 
-.nav-link {
-    cursor: pointer;
-}
-
-.nav-nolink {
-    color: rgba(255, 255, 255, 0.549);
-    padding: 0.5rem;
-}
-
 .qtyItems-cart {
     width: 20px;
     height: 20px;

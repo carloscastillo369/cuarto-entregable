@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { MovieModel } from '../../models/movie.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-info-movie',
@@ -38,11 +39,15 @@ export class InfoMovieComponent implements OnInit {
   modal:string = "modal";
   @ViewChild('asTrailer', {static: true}) trailer!: ElementRef;
 
-  constructor(private moviesService:MoviesService, private renderer2:Renderer2) { }
+  constructor(
+    private moviesService:MoviesService, 
+    private renderer2:Renderer2, 
+    private activatedRoute:ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.moviesService.getInfoMovie.subscribe((data) => {
-      this.infoMovie = data;
+    this.activatedRoute.params.subscribe((params) => {
+      this.infoMovie = this.moviesService.getInfoMovie(params.id);
     })
   }
 

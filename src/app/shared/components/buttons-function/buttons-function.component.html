@@ -1,4 +1,4 @@
-<div class="buttons-container">
+<div [ngClass]="buttonsContainer">
     <button *ngIf="movie.Forsale" class="btn btn-primary" 
         (click)="buyMovie(
             {

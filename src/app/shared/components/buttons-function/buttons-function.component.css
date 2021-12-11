@@ -1,4 +1,12 @@
-.buttons-container {
+.buttons-container-absolute {
+    display: flex;
+    justify-content: space-around;
+    width: 320px;
+    position: absolute;
+    bottom: 16px;
+}
+
+.buttons-container-relative {
     display: flex;
     justify-content: space-around;
 }

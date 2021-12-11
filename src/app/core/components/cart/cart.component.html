@@ -5,7 +5,7 @@
       <i class="bi bi-cart-x"></i>
       <p class="cart-empty-go-movies">
             Vuelva a 
-          <a class="link-to-movies" (click)="changeViewTo('movies')">
+          <a class="link-to-movies" [routerLink]="['/movies']">
             Movies</a>&nbsp;
             para comprar o alquilar una película de nuestro catálogo.
       </p>
@@ -13,18 +13,21 @@
   </ng-container>
 
   <ng-container *ngIf="cartMovies.length > 0">
+    <div class="cart-text-container">
+      <h3 class="cart-text">
+        <i class="bi bi-cart4"> Carrito de compras ({{cartMovies.length}} película{{cartMovies.length > 1? 's' : null}})
+        </i>
+      </h3>      
+    </div>
     <div class="cart-table">
       <div class="cart-list">
-        <h3 class="cart-text">
-          <i class="bi bi-cart4"> Carrito de compras ({{cartMovies.length}} película{{cartMovies.length > 1? 's' : null}})
-          </i>
-        </h3>
         <div class="table-container">
           <table class="table table-hover">
             <thead>
               <tr>
                 <th class="text-center" scope="col">#</th>
                 <th class="text-center" scope="col">Descripción</th>
+                <th class="text-center" scope="col">Acción</th>
                 <th class="text-center" scope="col">Tipo</th>
                 <th class="text-center" scope="col">Precio</th>
               </tr>
@@ -32,16 +35,20 @@
             <tbody class="t-body">
               <tr *ngFor="let product of cartMovies; let i = index">
                 <th class="text-center" scope="row">{{i+1}}</th>
-                <td class="col-item">
-                  <img class="cartitem-image" src={{product.Image}} alt="">
-                  <div class="cartitem-details">
-                    <strong>{{product.Title}}</strong>
-                    <span class="text-detail">Año: {{product.Year}}</span>
-                    <span class="text-detail">Duración: {{product.Runtime}}</span>
-                    <button class="btn-cartitem-delete" (click)="deleteCartItem(product)">
-                      <i class="bi bi-trash"></i> <span>Eliminar</span> 
-                    </button>
-                  </div>
+                <td>
+                  <a class="col-item" [routerLink]="['/movie', product.id, product.Title]">
+                    <img class="cartitem-image" src={{product.Image}} alt="">
+                    <div class="cartitem-details">
+                      <strong>{{product.Title}}</strong>
+                      <span class="text-detail">Año: {{product.Year}}</span>
+                      <span class="text-detail">Duración: {{product.Runtime}}</span>
+                    </div>
+                  </a>
+                </td>
+                <td class="text-center">
+                  <button class="btn-cartitem-delete" (click)="deleteCartItem(product)">
+                    <i class="bi bi-trash"></i> <span>Eliminar</span> 
+                  </button>
                 </td>
                 <td class="text-center">{{product.Tipo}}</td>
                 <td class="text-center">$ {{product.Price.toFixed(2)}}</td>
@@ -74,10 +81,10 @@
                 </tr>
             </tbody>
         </table>
-        <button class="btn-Pay btn btn-success" (click)="changeViewTo('signin')">
+        <button class="btn-Pay btn btn-success" routerLink="/signin">
             <i class="bi bi-credit-card"></i>&nbsp;&nbsp; Ir a Pagar
         </button>
-        <button class="btn-movies btn btn-outline-primary" (click)="changeViewTo('movies')">
+        <button class="btn-movies btn btn-outline-primary" routerLink="/movies">
             <i class="bi bi-list-check"></i>&nbsp;&nbsp; Seguir Comprando
         </button>
       </div>

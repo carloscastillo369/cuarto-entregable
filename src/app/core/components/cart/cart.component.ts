@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../../services/movies.service';
 import { CartService } from '../../services/cart.service';
 import { CartMoviesModel } from '../../models/cartmovies.model';
 
@@ -13,7 +12,7 @@ export class CartComponent implements OnInit {
   cartMovies:CartMoviesModel[] = [];
   totalPrice:number = 0;
 
-  constructor(private moviesService:MoviesService, private cartService:CartService) { }
+  constructor(private cartService:CartService) { }
 
   ngOnInit(): void {
     this.cartService.getCartMoviesList()
@@ -21,10 +20,6 @@ export class CartComponent implements OnInit {
       this.cartMovies = res;
       this.totalPrice = this.cartService.getTotalPrice();
     })
-  }
-
-  changeViewTo(view:string){
-    this.moviesService.getNameView.emit(view);
   }
 
   deleteCartItem(product:CartMoviesModel){

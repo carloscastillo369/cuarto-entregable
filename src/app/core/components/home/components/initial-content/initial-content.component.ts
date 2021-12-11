@@ -18,8 +18,4 @@ export class InitialContentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changeViewTo(view:string){
-    this.moviesService.getNameView.emit(view);
-  }
-
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MoviesService } from '../../services/movies.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,13 +12,9 @@ export class SignUpComponent implements OnInit {
   patternEmail = /^[0-9a-zA-Z._-]+@[a-zA-Z]+?\.[a-zA-Z]{2,3}$/;
   patternPassword = /^[0-9a-zA-Zñ]+$/;
 
-  constructor(private moviesService:MoviesService) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  changeViewTo(view:string){
-    this.moviesService.getNameView.emit(view);
   }
 
   formSignUp = new FormGroup({

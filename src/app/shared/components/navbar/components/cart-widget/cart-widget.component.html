@@ -1,8 +1,8 @@
-<div *ngIf="totalItemsCart == 0" class="icon-container nav-nolink">
+<div *ngIf="totalItemsCart == 0" class="icon-container nav-link">
     <i class="icon-image bi bi-cart-x"></i>
 </div>
 <ng-container *ngIf="totalItemsCart > 0">
-    <a [ngClass]="{'active':hideCart==false}" class="icon-container nav-link" (click)="changeViewTo('cart')">
+    <a class="icon-container nav-link" routerLink="/cart" routerLinkActive="active">
         <i class="icon-image bi bi-cart-check"></i>
         <div class="qtyItems-cart">
             <span>{{totalItemsCart}}</span>

@@ -28,7 +28,7 @@
                         
                         <hr>
                         
-                        <app-buttons-function [movie]="infoMovie"></app-buttons-function>
+                        <app-buttons-function [movie]="infoMovie" [buttonsContainer]="'buttons-container-relative'"></app-buttons-function>
                         <h3 *ngIf="infoMovie.Noavailable" class="alert alert-danger">Agotado</h3>
                         
                         <hr>

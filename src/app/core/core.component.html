@@ -1,19 +1,7 @@
 <div class="main">
-    <app-navbar 
-        [hideHome]="hideHome" 
-        [hideList]="hideList" 
-        [hideCart]="hideCart" 
-        [hideSignIn]="hideSignIn" 
-        [hideSignUp]="hideSignUp"
-    >
-    </app-navbar>
+    <app-navbar></app-navbar>
     <div class="view-content">
-        <app-home [hidden]="hideHome"></app-home>
-        <app-list-movies [hidden]="hideList"></app-list-movies>
-        <app-cart [hidden]="hideCart"></app-cart>
-        <app-sign-in [hidden]="hideSignIn"></app-sign-in>
-        <app-sign-up [hidden]="hideSignUp"></app-sign-up>
-        <app-info-movie [hidden]="hideInfoMovie"></app-info-movie>
+        <router-outlet></router-outlet>
     </div>
     <app-footer></app-footer>
 </div>

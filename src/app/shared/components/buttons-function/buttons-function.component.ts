@@ -11,6 +11,7 @@ import { CartMoviesModel } from '../../../core/models/cartmovies.model';
 export class ButtonsFunctionComponent implements OnInit {
 
   @Input() movie!:MovieModel;
+  @Input() buttonsContainer!:string;
 
   constructor(private cartService:CartService) { }
 
