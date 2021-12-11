@@ -1,0 +1,80 @@
+<div class="container infoMovie-container">
+    <div class="card">
+        <img src={{infoMovie.Banner}} class="card-img-top">
+        <div class="card card-content">
+            <div class="row g-0">
+                <div class="col-md-3 img-poster-content">
+                    <img src={{infoMovie.Poster}} class="img-fluid img-poster">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h3 class="card-title">{{infoMovie.Title}}</h3>
+                        <div class="first-info-movie">
+                            <div class="principal-info-movie">
+                                <p class="card-text text-muted">{{infoMovie.Genre}} &nbsp;&nbsp; {{infoMovie.Released}} </p>
+                                <p class="card-text text-muted">Clasificación: {{infoMovie.Rated}} &nbsp;&nbsp; Duración: {{infoMovie.Runtime}}</p>
+                            </div>
+                            <div class="verTrailer">
+                                <button class="btn btn-danger" (click)="openModalTrailer()"> <i class="bi bi-youtube"> Trailer</i> </button>
+                            </div>
+                        </div>
+                       
+                        
+                        <hr>
+                        
+                        <h5>Sinopsis</h5>
+                        <p class="card-text fw-light">{{infoMovie.Plot}}</p>
+                        <p class="card-text"></p>
+                        
+                        <hr>
+                        
+                        <app-buttons-function [movie]="infoMovie"></app-buttons-function>
+                        <h3 *ngIf="infoMovie.Noavailable" class="alert alert-danger">Agotado</h3>
+                        
+                        <hr>
+                        
+                        <div class="extra-info">
+                            <div>
+                                <span class="fw-bold">Director: </span>
+                                <span class="fst-italic">{{infoMovie.Director}}</span> 
+                            </div>
+                            <div> 
+                                <span class="fw-bold">Actores: </span>
+                                <span class="fst-italic">{{infoMovie.Actors}}</span>
+                            </div>
+                            <div> 
+                                <span class="fw-bold">Idioma: </span>
+                                <span class="fst-italic">{{infoMovie.Language}}</span>
+                            </div>
+                            <div>
+                                <span class="fw-bold">País: </span>
+                                <span class="fst-italic"> {{infoMovie.Country}}</span>
+                            </div>
+                            <div>
+                                <span class="fw-bold">Premios: </span>
+                                <span class="fst-italic">{{infoMovie.Awards}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div [ngClass]="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">{{infoMovie.Title}}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModalTrailer()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ratio ratio-16x9">
+                    <iframe #asTrailer src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+

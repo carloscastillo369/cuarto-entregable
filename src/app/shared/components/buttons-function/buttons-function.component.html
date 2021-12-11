@@ -1,0 +1,28 @@
+<div class="buttons-container">
+    <button *ngIf="movie.Forsale" class="btn btn-primary" 
+        (click)="buyMovie(
+            {
+                id:movie.id, 
+                Title:movie.Title, 
+                Image:movie.Poster, 
+                Year:movie.Year, 
+                Runtime:movie.Runtime, 
+                Tipo:'Compra', 
+                Price:movie.Saleprice
+            }
+        )">Comprar ${{movie.Saleprice}}
+    </button>
+    <button *ngIf="movie.Forrental" class="btn btn-success" 
+        (click)="buyMovie(
+            {
+                id:movie.id, 
+                Title:movie.Title, 
+                Image:movie.Poster, 
+                Year:movie.Year, 
+                Runtime:movie.Runtime, 
+                Tipo:'Alquiler', 
+                Price:movie.Rentalprice
+            }
+        )">Alquilar ${{movie.Rentalprice}}
+    </button>
+</div>

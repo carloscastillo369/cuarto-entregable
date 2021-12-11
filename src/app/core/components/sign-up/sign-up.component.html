@@ -1,0 +1,77 @@
+<div class="sign-up-container">
+    <div class="sign-up-form">
+        <form [formGroup]="formSignUp" (submit)="onSaveForm()">
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input 
+                    type="text" 
+                    class="form-control"
+                    formControlName="name"
+                    [class.is-valid]="isValidField('name')"
+                    [class.is-invalid]="isInvalidField('name')"
+                >
+                <div class="invalid-feedback" *ngIf="isInvalidField('name')">
+                    {{getErrorMessage('name')}}
+                </div>
+              </div>
+            <div class="mb-3">
+                <label class="form-label">Dirección de correo electrónico</label>
+                <input 
+                    type="email" 
+                    class="form-control"
+                    formControlName="email"
+                    [class.is-valid]="isValidField('email')"
+                    [class.is-invalid]="isInvalidField('email')"
+                >
+                <div class="invalid-feedback" *ngIf="isInvalidField('email')">
+                    {{getErrorMessage('email')}}
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <input 
+                    type="password" 
+                    class="form-control"
+                    formControlName="password"
+                    [class.is-valid]="isValidField('password')"
+                    [class.is-invalid]="isInvalidField('password')"
+                >
+                <div class="invalid-feedback" *ngIf="isInvalidField('password')">
+                    {{getErrorMessage('password')}}
+                </div>
+            </div>
+            <div class="mb-3">
+                    <label class="form-label">Confirma tu contraseña</label>
+                    <input 
+                        type="password" 
+                        class="form-control"
+                        formControlName="confirmPassword"
+                        [class.is-valid]="isValidField('password')"
+                        [class.is-invalid]="isInvalidField('password')"
+                    >
+                    <div class="invalid-feedback" *ngIf="isInvalidField('password')">
+                        {{getErrorMessage('password')}}
+                    </div>
+            </div>
+            <div class="mb-3 form-check">
+                <input 
+                    type="checkbox" 
+                    class="form-check-input"
+                    formControlName="checkbox"
+                    [class.is-invalid]="isInvalidField('checkbox')"
+                >
+                <label class="form-check-label">
+                    Acepto los términos y condiciones
+                </label>
+                <div class="invalid-feedback" *ngIf="isInvalidField('checkbox')">
+                    {{getErrorMessage('checkbox')}}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="formSignUp.invalid">Crea tu cuenta de HomeMovie</button>
+        </form>
+        <div class="signin-button-container">
+            <p>¿Ya tienes una cuenta en HomeMovie?</p>
+            <button (click)="changeViewTo('signin')" class="btn btn-secondary">Ingresa a tu cuenta de HomeMovie</button>
+        </div>
+    </div>
+</div>

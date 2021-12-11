@@ -1,0 +1,8 @@
+.buttons-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    width: 120px;
+}

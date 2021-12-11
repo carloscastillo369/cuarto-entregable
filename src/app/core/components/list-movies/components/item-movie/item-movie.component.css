@@ -1,0 +1,21 @@
+p {
+    margin-bottom: 8px;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-img {
+    opacity: 30%;
+}
+
+.card-img-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.link-info:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,16 @@
+<div class="card bg-dark text-white">
+    <img src={{movie.Poster}} class="card-img" alt="...">
+    <div class="card-img-overlay">
+        <div class="data-movies-container">
+            <h5 class="card-title">{{movie.Title}}</h5>
+            <p class="card-text">{{movie.Year}}</p>
+            <p class="card-text">{{movie.Genre}}</p>
+            <a *ngIf="!movie.Commingsoon" (click)="getInfoMovie(movie)">
+                <i class="bi bi-plus-circle link-info"> Más info</i>
+            </a>
+        </div>
+        <h3 *ngIf="movie.Commingsoon" class="alert alert-primary">Proximamente</h3>
+        <h3 *ngIf="movie.Noavailable" class="alert alert-danger">Agotado</h3>
+        <app-buttons-function [movie]="movie"></app-buttons-function>
+    </div>
+</div>

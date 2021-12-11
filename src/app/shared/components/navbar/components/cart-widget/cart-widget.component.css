@@ -1,0 +1,40 @@
+.icon-image {
+    width: 29px ;
+    height: 29px ;
+}
+
+.icon-image::before {
+    font-size: 22px;
+    vertical-align: 0px;
+}
+
+.icon-container {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    position: relative;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+.nav-nolink {
+    color: rgba(255, 255, 255, 0.549);
+    padding: 0.5rem;
+}
+
+.qtyItems-cart {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    border-radius: 50%;
+    background: #0d6efd;
+    color: #ffffff;
+    position: absolute;
+    top: 2px;
+    right: -2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

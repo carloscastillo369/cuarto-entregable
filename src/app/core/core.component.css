@@ -1,0 +1,9 @@
+.main {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #363434;
+}
+
+.view-content {
+    min-height: calc(100vh - 176px);
+}
