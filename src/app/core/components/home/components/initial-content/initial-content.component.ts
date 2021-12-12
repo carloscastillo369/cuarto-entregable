@@ -9,13 +9,12 @@ import { MovieModel } from 'src/app/core/models/movie.model';
 })
 export class InitialContentComponent implements OnInit {
 
-  nextReleases:MovieModel[];
+  nextReleases!:MovieModel[];
 
-  constructor(private moviesService:MoviesService) { 
-    this.nextReleases = this.moviesService.movies.filter((i:any) => i.Commingsoon == true);
-  }
+  constructor(private moviesService:MoviesService) { }
 
   ngOnInit(): void {
+    this.nextReleases = this.moviesService.movies.filter((i:any) => i.Commingsoon == true);
   }
 
 }

@@ -14,15 +14,19 @@
                     {{getErrorMessage('email')}}
                 </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 input-password-container">
                 <label class="form-label">Contraseña</label>
                 <input 
-                    type="password" 
+                    type={{passwordTypeInput}}
                     class="form-control"
                     formControlName="password"
                     [class.is-valid]="isValidField('password')"
                     [class.is-invalid]="isInvalidField('password')"
                 >
+                <i [ngClass]="{'bi bi-eye-slash':passwordTypeInput=='password', 'bi bi-eye':passwordTypeInput=='text'}" 
+                    class="show-hide-password" 
+                    (click)="changePasswordTypeInput(passwordTypeInput)">
+                </i>
                 <div class="invalid-feedback" *ngIf="isInvalidField('password')">
                     {{getErrorMessage('password')}}
                 </div>

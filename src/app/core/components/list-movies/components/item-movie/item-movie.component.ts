@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { MovieModel } from 'src/app/core/models/movie.model';
 
 @Component({
@@ -6,13 +6,22 @@ import { MovieModel } from 'src/app/core/models/movie.model';
   templateUrl: './item-movie.component.html',
   styleUrls: ['./item-movie.component.css']
 })
-export class ItemMovieComponent implements OnInit {
+export class ItemMovieComponent implements OnInit, OnChanges {
 
   @Input() movie!:MovieModel;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
+    console.log(`%c *********** ngOnChanges - ItemMovieComponent`, `color:green`);
+  }
+
+  ngDocheck(){
+    console.log('hola');
+    
   }
 
 }

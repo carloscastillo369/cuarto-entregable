@@ -1,36 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent implements OnInit, OnDestroy {
 
   patternEmail = /^[0-9a-zA-Z._-]+@[a-zA-Z]+?\.[a-zA-Z]{2,3}$/;
   patternPassword = /^[0-9a-zA-Zñ]+$/;
 
-  constructor() { }
+  passwordTypeInput:string = "password";
+
+  constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    console.log(`%c *********** ngOnInit - SignInComponent`, `color:blue`);
   }
 
-  formSignIn = new FormGroup({
-    email: new FormControl('',
+  ngOnDestroy(): void {
+    console.log(`%c *********** ngOnDestroy - SingInComponent`, `color:red`);
+  }
+
+  formSignIn: FormGroup = this.fb.group({
+    email: ['',
       [
         Validators.required,
         Validators.pattern(this.patternEmail)
-      ]),
-    password: new FormControl('',
+      ]],
+    password: ['',
       [
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(12), 
         Validators.pattern(this.patternPassword)
-      ])
-  })
-
+      ]]
+  }) 
+  
   isValidField (field:string){
     return this.formSignIn.get(field)?.valid;
   }
@@ -64,7 +71,7 @@ export class SignInComponent implements OnInit {
           message = 'Por favor, ingrese su contraseña.';
           break;
       }
-    } else if (this.formSignIn.get(field)?.hasError('pattern')) {
+    } else if (this.formSignIn.get(field)?.errors?.pattern) {
       switch(field) {
         case 'email':
           message = 'Por favor, ingrese una dirección de correo electrónico válida (p.e. someone@example.com).';
@@ -84,5 +91,8 @@ export class SignInComponent implements OnInit {
     return message;
   }
 
+  changePasswordTypeInput(type: string){
+    type == "password"? this.passwordTypeInput="text" : this.passwordTypeInput="password";
+  }
 
 }

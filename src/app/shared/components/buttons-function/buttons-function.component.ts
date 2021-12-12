@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { MovieModel } from 'src/app/core/models/movie.model';
 import { CartService } from '../../../core/services/cart.service';
 import { CartMoviesModel } from '../../../core/models/cartmovies.model';
@@ -8,7 +8,7 @@ import { CartMoviesModel } from '../../../core/models/cartmovies.model';
   templateUrl: './buttons-function.component.html',
   styleUrls: ['./buttons-function.component.css']
 })
-export class ButtonsFunctionComponent implements OnInit {
+export class ButtonsFunctionComponent implements OnInit, OnChanges {
 
   @Input() movie!:MovieModel;
   @Input() buttonsContainer!:string;
@@ -16,6 +16,10 @@ export class ButtonsFunctionComponent implements OnInit {
   constructor(private cartService:CartService) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
+    console.log(`%c *********** ngOnChanges - ButtonsFunctionComponent`, `color:green`);
   }
 
   buyMovie(movieToBuy:CartMoviesModel){

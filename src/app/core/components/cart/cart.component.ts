@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CartMoviesModel } from '../../models/cartmovies.model';
 
@@ -7,7 +7,7 @@ import { CartMoviesModel } from '../../models/cartmovies.model';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
 
   cartMovies:CartMoviesModel[] = [];
   totalPrice:number = 0;
@@ -20,6 +20,12 @@ export class CartComponent implements OnInit {
       this.cartMovies = res;
       this.totalPrice = this.cartService.getTotalPrice();
     })
+
+    console.log(`%c *********** ngOnInit - CartComponent`, `color:blue`);
+  }
+
+  ngOnDestroy(): void {
+    console.log(`%c *********** ngOnDestroy - CartComponent`, `color:red`);
   }
 
   deleteCartItem(product:CartMoviesModel){

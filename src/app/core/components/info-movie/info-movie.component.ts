@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild, OnDestroy } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { MovieModel } from '../../models/movie.model';
 import { ActivatedRoute } from '@angular/router';
@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './info-movie.component.html',
   styleUrls: ['./info-movie.component.css']
 })
-export class InfoMovieComponent implements OnInit {
+export class InfoMovieComponent implements OnInit, OnDestroy {
 
   infoMovie:MovieModel = {
     id: 0,
@@ -46,9 +46,16 @@ export class InfoMovieComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
+    this.activatedRoute.params
+    .subscribe((params) => {
       this.infoMovie = this.moviesService.getInfoMovie(params.id);
     })
+
+    console.log(`%c *********** ngOnInit - InfoMovieComponent`, `color:blue`);
+  }
+
+  ngOnDestroy(): void {
+    console.log(`%c *********** ngOnDestroy - InfoMovieComponent`, `color:red`);
   }
 
   openModalTrailer(){
@@ -62,5 +69,5 @@ export class InfoMovieComponent implements OnInit {
     const trailer = this.trailer.nativeElement;
     this.renderer2.setAttribute(trailer,'src',"")
   }
-
+  
 }

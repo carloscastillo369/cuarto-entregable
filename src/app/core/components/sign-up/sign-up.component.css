@@ -19,3 +19,16 @@
 .btn {
     width: 100%;
 }
+
+.input-password-container {
+    position: relative;
+}
+
+.show-hide-password {
+    position: absolute;
+    top: 40px;
+    right: 36px;
+    z-index: 100;
+    font-size: 18px;
+    cursor: pointer;
+}   
